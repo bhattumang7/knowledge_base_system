@@ -48,5 +48,7 @@
                 out.println("Please enter value");
             }
         %>
-    </body>
+
+    </div>
+</body>
 </html>

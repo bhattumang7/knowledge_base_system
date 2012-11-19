@@ -17,7 +17,7 @@
 
             if (action.equalsIgnoreCase("delete"))
             {
-                long id = Long.parseLong( request.getParameter("id") );
+                long id = Long.parseLong(request.getParameter("id"));
                 Symptom.deleteById(id);
                 response.sendRedirect("symptom_list.jsp");
             }
@@ -89,5 +89,7 @@
                 }
             %>
 
-    </body>
+           
+        </div>
+</body>
 </html>

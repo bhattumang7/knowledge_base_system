@@ -14,43 +14,43 @@
         <%@include  file="include_head.jsp" %>
         <title>Knowledge Base System | Add Medicines</title>
     </head>
-    <%     
-        boolean is_valid = true ;
+    <%
+        boolean is_valid = true;
         if (request.getMethod().equalsIgnoreCase("post"))
         {
             try
             {
                 String medicine_name = request.getParameter("medicine_name");
-           //     float quantity = Float.parseFloat(request.getParameter("quantity"));
+                //     float quantity = Float.parseFloat(request.getParameter("quantity"));
                 long medicineTypeLong = Long.parseLong(request.getParameter("medicine_type"));
-                
+
                 medicine_name = medicine_name.trim();
                 if (medicine_name.equalsIgnoreCase(""))
                 {
                     throw new NumberFormatException();
                 }
-             /*   if (quantity <= 0)
-                {
-                    throw new NumberFormatException();
-                }*/
+                /*   if (quantity <= 0)
+                 {
+                 throw new NumberFormatException();
+                 }*/
                 if (medicineTypeLong != 0 && medicineTypeLong != 1 && medicineTypeLong != 2)
                 {
                     throw new NumberFormatException();
                 }
                 Medicine m = new Medicine();
                 m.setMedicineName(medicine_name);
-             //   m.setQuantity(quantity);
+                //   m.setQuantity(quantity);
                 m.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(medicineTypeLong));
                 m.save();
                 response.sendRedirect("show_medicines.jsp");
-                
+
             }
             catch (NumberFormatException nfe)
             {
-                is_valid = false ;
+                is_valid = false;
             }
-            
-            
+
+
         }
     %>
     <body>
@@ -67,10 +67,10 @@
                         <input type="text" name="medicine_name" maxlength="2500" reqired="reqired" value="<% if (request.getParameter("medicine_name") != null)
                             {
                                 out.print(request.getParameter("medicine_name"));
-                            }                            %>" >
+                            }%>" >
                     </td>
                 </tr>
-               
+
                 <tr>
                     <td>
                         <b> Medicine Type  </b>
@@ -78,20 +78,26 @@
                     <td>
                         <select name="medicine_type">
                             <option value="0" <% if (request.getParameter("medicine_type") != null)
-                            {
-                                if(request.getParameter("medicine_type").equalsIgnoreCase("0"))
-                                out.print("selected=\"selected\"");
-                            }                            %> > Injection </option>
+                                {
+                                    if (request.getParameter("medicine_type").equalsIgnoreCase("0"))
+                                    {
+                                        out.print("selected=\"selected\"");
+                                    }
+                                }%> > Injection </option>
                             <option value="1" <% if (request.getParameter("medicine_type") != null)
-                            {
-                                if(request.getParameter("medicine_type").equalsIgnoreCase("1"))
-                                out.print("selected=\"selected\"");
-                            }                            %> > Liquid </option>
+                                {
+                                    if (request.getParameter("medicine_type").equalsIgnoreCase("1"))
+                                    {
+                                        out.print("selected=\"selected\"");
+                                    }
+                                }%> > Liquid </option>
                             <option value="2" <% if (request.getParameter("medicine_type") != null)
-                            {
-                                if(request.getParameter("medicine_type").equalsIgnoreCase("2"))
-                                out.print("selected=\"selected\"");
-                            }                            %>> Tablet </option>
+                                {
+                                    if (request.getParameter("medicine_type").equalsIgnoreCase("2"))
+                                    {
+                                        out.print("selected=\"selected\"");
+                                    }
+                                }%>> Tablet </option>
                         </select>
                     </td>
                 </tr>
@@ -102,12 +108,12 @@
                 </tr>
             </form>
         </table>
-                        <%
-if(!is_valid)                        
-{
-       out.println("PLease correct the input");
-}
-%>
-
-    </body>
+        <%
+            if (!is_valid)
+            {
+                out.println("PLease correct the input");
+            }
+        %>
+    </div>
+</body>
 </html>

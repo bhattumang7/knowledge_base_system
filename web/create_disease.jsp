@@ -16,8 +16,8 @@
         <%@include  file="include_head.jsp" %>
         <title>Knowledge Base System | Create Disease </title>
     </head>
-     
-    
+
+
     <body>
         <%@include  file="nav.jsp" %>
 
@@ -36,7 +36,8 @@
                         if (c == '(' || c == ')' || c == '&' || c == '|')
                         {
                             newExpression += c;
-                        } else
+                        }
+                        else
                         {
                             newExpression += request.getParameterValues("op")[sCount];
 
@@ -86,7 +87,7 @@
                     // out.print(originalString);
         %>
 
-      <!--  <h1> Create Disease </h1> -->
+        <!--  <h1> Create Disease </h1> -->
         <form method="post" action="create_disease.jsp">
             Disease: <input type="text" name="diseaseName"> <br/> 
             Rule :
@@ -103,7 +104,8 @@
             <input type="hidden" name="op1" value="<%= c%>"> 
             <%= c%>
             <%//
-            } else
+            }
+            else
             {
                 List<Symptom> symptomList = Symptom.getSymptomList();
             %>
@@ -128,8 +130,8 @@
                 }
             }
         %>
-        
-        
-        <%@include  file="bottom.jsp" %>
-    </body>
+
+
+    </div>
+</body>
 </html>

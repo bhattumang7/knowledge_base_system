@@ -1,7 +1,21 @@
-<h1> Knowledge Base System </h1>
-<a href="index.jsp"> Home </a> &nbsp;
-<a href="create_disease.jsp"> Create Disease </a>  &nbsp;
-<a href="create_symptom.jsp"> Create Symptom </a> &nbsp;
-<a href="symptom_list.jsp"> Symptom List </a> &nbsp;
-<a href="show_medicines.jsp"> Medicine List </a> &nbsp;
-<a href="add_medicine.jsp"> Add Medicine </a> &nbsp;
+<div id="wrap">
+
+<div id="header">
+<h1><a href="index.jsp">Knowledge Base System</a></h1>
+<h2>WDAJ case study developed by Umang Bhatt and Masiha Kureshi</h2>
+</div>
+
+<div id="menu">
+<ul>
+<!--<li> <a href="index.jsp"> Home </a> </li>-->
+<li><a href="create_disease.jsp"> Create Disease </a>  </li>
+<li><a href="create_symptom.jsp"> Create Symptom </a> </li>
+<li><a href="symptom_list.jsp"> Symptom List </a> </li>
+<li><a href="show_medicines.jsp"> Medicine List </a> </li>
+<li><a href="add_medicine.jsp"> Add Medicine </a> </li>
+
+</ul>
+</div>
+
+<div id="content">
+
