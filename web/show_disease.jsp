@@ -10,11 +10,11 @@
 <%
     if (request.getMethod().equalsIgnoreCase("post"))
     {
-        long diseaseId = Long.parseLong( request.getParameter("id") );
-        Disease aDisease= Disease.getDiseaseById(diseaseId);
+        long diseaseId = Long.parseLong(request.getParameter("id"));
+        Disease aDisease = Disease.getDiseaseById(diseaseId);
         aDisease.delete();
         response.sendRedirect("show_disease.jsp");
-                
+
     }
 %>
 <!DOCTYPE html>
@@ -66,20 +66,22 @@
                 <td>
                     <%= aDisease.getSymptomAsViewableString()%>
                 </td>
-            <form action="show_disease.jsp" method="post">
-                <input type="hidden" name="id" value="<%= aDisease.getDiseaseId()%>">
-                <input type="submit" value=" Delete ">
-            </form>
-        </tr>
+                <td>
+                    <form action="show_disease.jsp" method="post">
+                        <input type="hidden" name="id" value="<%= aDisease.getDiseaseId()%>">
+                        <input type="submit" value=" Delete ">
+                    </form>
+                <td>
+            </tr>
 
-        <%//
-            }
+            <%//
+                }
+            %>
+        </table>
+
+        <%    }
         %>
-    </table>
-
-    <%    }
-    %>
-</div>
+    </div>
 
 </body>
 </html>
