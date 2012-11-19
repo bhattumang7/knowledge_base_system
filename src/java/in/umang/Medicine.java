@@ -22,7 +22,6 @@ public class Medicine
 
     private long medicineId;
     private String medicineName;
-    private float quantity;
     private MedicineType medicineType;
 
     public long getMedicineId()
@@ -55,16 +54,6 @@ public class Medicine
         this.medicineType = medicineType;
     }
 
-    public float getQuantity()
-    {
-        return quantity;
-    }
-
-    public void setQuantity(float quantity)
-    {
-        this.quantity = quantity;
-    }
-
     public static Medicine getMedicineById(long medicineId) throws SQLException, NoSuchRecordException
     {
         Medicine aMedicine = new Medicine();
@@ -76,8 +65,8 @@ public class Medicine
         {
             aMedicine.setMedicineId(aResultSet.getLong("medicineId"));
             aMedicine.setMedicineName(aResultSet.getString("medicineName"));
-            aMedicine.setQuantity(aResultSet.getFloat("quantity"));
-            aMedicine.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(aResultSet.getLong("type = MedicineType.tablet")));
+          //  aMedicine.setQuantity(aResultSet.getFloat("quantity"));
+            aMedicine.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(aResultSet.getLong("MedicineType")));
         }
         if (aMedicine == null)
         {
@@ -92,13 +81,13 @@ public class Medicine
 
         Connection aConnection = Database.getConnection();
         Statement getAllStatement = aConnection.createStatement();
-        ResultSet aResultSet = getAllStatement.executeQuery("select * from medicine");
+        ResultSet aResultSet = getAllStatement.executeQuery("select * from medicine where deleted=0");
         while (aResultSet.next())
         {
             Medicine aMedicine = new Medicine();
             aMedicine.setMedicineId(aResultSet.getLong("medicineId"));
             aMedicine.setMedicineName(aResultSet.getString("medicineName"));
-            aMedicine.setQuantity(aResultSet.getFloat("quantity"));
+         //   aMedicine.setQuantity(aResultSet.getFloat("quantity"));
             aMedicine.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(aResultSet.getLong("MedicineType")));
             aMedicineList.add(aMedicine);
         }
@@ -109,7 +98,7 @@ public class Medicine
     {
         Connection aConnection = Database.getConnection();
         Statement insertStatement = aConnection.createStatement();
-        String sql = "UPDATE  `wdaj`.`medicine` SET  `medicineName` =  '" + medicineName + "', `quantity` =  '" + quantity + "', `medicineType` =  '" + MyMedicineTypeUtil.getIdForMedicineType(medicineType) + "' WHERE  `medicine`.`medicineId` =" + medicineId + ";";
+        String sql = "UPDATE  `wdaj`.`medicine` SET  `medicineName` =  '" + medicineName + "', `medicineType` =  '" + MyMedicineTypeUtil.getIdForMedicineType(medicineType) + "' WHERE  `medicine`.`medicineId` =" + medicineId + ";";
         int noOfRowsAffected = insertStatement.executeUpdate(sql);
 
     }
@@ -117,9 +106,19 @@ public class Medicine
     public void save() throws SQLException
     {
         Connection aConnection = Database.getConnection();
-        String sql = "INSERT INTO  `wdaj`.`medicine` (`medicineId` ,`medicineName` ,`quantity` ,`medicineType`)VALUES (NULL ,  '" + this.medicineName + "',  '" + this.quantity + "',  '" + MyMedicineTypeUtil.getIdForMedicineType(medicineType) + "');";
+        String sql = "INSERT INTO  `wdaj`.`medicine` (`medicineId` ,`medicineName` , `medicineType`, deleted)VALUES (NULL ,  '" + this.medicineName + "',  '" + MyMedicineTypeUtil.getIdForMedicineType(medicineType) + "', 0);";
         Statement insertStatement = aConnection.createStatement();
 
+        int noOfRowsAffected = insertStatement.executeUpdate(sql);
+
+
+    }
+    
+    public void delete() throws SQLException
+    {
+        Connection aConnection = Database.getConnection();
+        Statement insertStatement = aConnection.createStatement();
+        String sql = "UPDATE medicine SET  deleted =  '1' WHERE  medicineId =" + medicineId ;
         int noOfRowsAffected = insertStatement.executeUpdate(sql);
 
 
