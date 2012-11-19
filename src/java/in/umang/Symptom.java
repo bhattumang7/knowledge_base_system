@@ -106,6 +106,28 @@ public class Symptom
         aConnection.close();
         return symptomList;
     }
+    public static List<Symptom> getSymptomListIncludeingDeleted() throws SQLException
+    {
+
+        List<Symptom> symptomList = new LinkedList<Symptom>();
+        Connection aConnection = Database.getConnection();
+        Statement getAllStatement = aConnection.createStatement();
+        ResultSet aResultSet = getAllStatement.executeQuery("select * from symptom");
+        while (aResultSet.next())
+        {
+            long symptomId = aResultSet.getLong("symptomID");
+            String symptomName = aResultSet.getString("symptomName");
+
+            Symptom aSymptom = new Symptom();
+
+            aSymptom.setSymptomID(symptomId);
+            aSymptom.setSymptomName(symptomName);
+
+            symptomList.add(aSymptom);
+        }
+        aConnection.close();
+        return symptomList;
+    }
 
     public void update() throws SQLException
     {
