@@ -107,7 +107,7 @@ public class Disease
 
         Connection aConnection = Database.getConnection();
         Statement getAllStatement = aConnection.createStatement();
-        ResultSet aResultSet = getAllStatement.executeQuery("select * from disease");
+        ResultSet aResultSet = getAllStatement.executeQuery("select * from disease where deleted=0");
         while (aResultSet.next())
         {
             Disease aDisease = new Disease();
@@ -154,5 +154,12 @@ public class Disease
         }
 
         return aString;
+    }
+    public void delete() throws SQLException
+    {
+        Connection aConnection = Database.getConnection();
+        Statement updateStatement = aConnection.createStatement();
+        String sql = "UPDATE  `wdaj`.`disease` SET  `deleted` =  '1' WHERE  `disease`.`diseaseId` ="+ diseaseId ;
+        int noOfRowsAffected = updateStatement.executeUpdate(sql);
     }
 }

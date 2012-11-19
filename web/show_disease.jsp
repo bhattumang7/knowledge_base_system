@@ -7,6 +7,16 @@
 <%@page import="in.umang.Disease"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    if (request.getMethod().equalsIgnoreCase("post"))
+    {
+        long diseaseId = Long.parseLong( request.getParameter("id") );
+        Disease aDisease= Disease.getDiseaseById(diseaseId);
+        aDisease.delete();
+        response.sendRedirect("show_disease.jsp");
+                
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,6 +48,9 @@
                 <td>
                     <b> Symptom </b>
                 </td>
+                <td>
+                    <b> Delete </b>
+                </td>
             </tr>
             <%
                 for (Disease aDisease : aDiseaseList)
@@ -53,16 +66,20 @@
                 <td>
                     <%= aDisease.getSymptomAsViewableString()%>
                 </td>
-            </tr>
+            <form action="show_disease.jsp" method="post">
+                <input type="hidden" name="id" value="<%= aDisease.getDiseaseId()%>">
+                <input type="submit" value=" Delete ">
+            </form>
+        </tr>
 
-            <%//
-                }
-            %>
-        </table>
-
-        <%    }
+        <%//
+            }
         %>
-    </div>
+    </table>
+
+    <%    }
+    %>
+</div>
 
 </body>
 </html>
