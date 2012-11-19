@@ -16,8 +16,8 @@
         <%@include  file="nav.jsp" %>
 
         <h3>Welcome to the Knowledge Base System</h3>
-        
-     </div>
-        
-    </body>
+
+    </div>
+
+</body>
 </html>
