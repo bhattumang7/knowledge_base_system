@@ -11,10 +11,6 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-//import org.hibernate.Query;
-//import org.hibernate.Session;
-//import org.hibernate.SessionFactory;
-//import org.hibernate.Transaction;
 
 /**
  *
@@ -66,12 +62,6 @@ public class Symptom
 
         int noOfRowsAffected = insertStatement.executeUpdate("INSERT INTO  symptom (symptomID ,symptomName)VALUES (NULL ,  '" + symptomName + "')");
         aConnection.close();;
-        /*if(noOfRowsAffected!=1)
-         {
-         throw new RuntimeException("Could not insert");
-         }*/
-
-
     }
 
     public static Symptom getSymptomById(long id) throws SQLException, NoSuchRecordException
