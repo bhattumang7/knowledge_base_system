@@ -54,6 +54,9 @@
                 <td>
                     <b> Delete </b>
                 </td>
+                <td>
+                    <b> Edit </b>
+                </td>
             </tr>
             <%
                 for (Medicine aMedicine : aMedicineList)
@@ -73,7 +76,14 @@
                 <td>
                     <form method="post" action="show_medicines.jsp">
                         <input type="hidden" name="id" value="<%= aMedicine.getMedicineId()%>">
-                        <input type="submit" value="Delete">
+                        <input type="submit" value=" Delete ">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="edit_medicine.jsp">
+                        <input type="hidden" name="action" value="edit">
+                        <input type="hidden" name="id" value="<%= aMedicine.getMedicineId()%>">
+                        <input type="submit" value="  Edit  ">
                     </form>
                 </td>
             </tr>
