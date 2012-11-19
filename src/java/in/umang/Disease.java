@@ -25,18 +25,8 @@ public class Disease
 
     private long diseaseId;
     private String diseaseName;
-    private Set<Medicine> medicines;
     private String rule;
-
-    public Set<Medicine> getMedicines()
-    {
-        return medicines;
-    }
-
-    public void setMedicines(Set<Medicine> medicines)
-    {
-        this.medicines = medicines;
-    }
+    
 
     public String getDiseaseName()
     {
@@ -90,7 +80,7 @@ public class Disease
         ResultSet aResultSet = getAllStatement.executeQuery("select * from disease where diseaseId=" + diseaseId);
         while (aResultSet.next())
         {
-            aDisease.setDiseaseId(aResultSet.getLong("	diseaseId"));
+            aDisease.setDiseaseId(aResultSet.getLong("diseaseId"));
             aDisease.setDiseaseName(aResultSet.getString("diseaseName"));
             aDisease.setRule(aResultSet.getString("rule"));
         }
@@ -161,5 +151,14 @@ public class Disease
         Statement updateStatement = aConnection.createStatement();
         String sql = "UPDATE  `wdaj`.`disease` SET  `deleted` =  '1' WHERE  `disease`.`diseaseId` ="+ diseaseId ;
         int noOfRowsAffected = updateStatement.executeUpdate(sql);
+    }
+    public void addMedicine(long medicineId,long timesADay,float quantity) throws SQLException
+    {
+        MedicineForDisease aMedicineForDisease = new MedicineForDisease();
+        aMedicineForDisease.setDiseaseId(this.diseaseId);
+        aMedicineForDisease.setMedicineId(medicineId);
+        aMedicineForDisease.setTimesADay(timesADay);
+        aMedicineForDisease.setQuantity(quantity);
+        aMedicineForDisease.save();
     }
 }

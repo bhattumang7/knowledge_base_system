@@ -72,6 +72,12 @@
                         <input type="submit" value=" Delete ">
                     </form>
                 <td>
+                    <td>
+                    <form action="disease_medicines.jsp" method="get">
+                        <input type="hidden" name="id" value="<%= aDisease.getDiseaseId()%>">
+                        <input type="submit" value=" Edit Medicines ">
+                    </form>
+                <td>
             </tr>
 
             <%//
