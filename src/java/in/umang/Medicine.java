@@ -99,7 +99,7 @@ public class Medicine
             aMedicine.setMedicineId(aResultSet.getLong("medicineId"));
             aMedicine.setMedicineName(aResultSet.getString("medicineName"));
             aMedicine.setQuantity(aResultSet.getFloat("quantity"));
-            aMedicine.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(aResultSet.getLong("type = MedicineType.tablet")));
+            aMedicine.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(aResultSet.getLong("MedicineType")));
             aMedicineList.add(aMedicine);
         }
         return aMedicineList;
