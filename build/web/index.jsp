@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Knowledge Base System</title>
+        <%@include  file="include_head.jsp" %>
+        <title>Knowledge Base System | Home</title>
     </head>
     <body>
         <%@include  file="nav.jsp" %>
