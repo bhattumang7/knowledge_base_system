@@ -65,7 +65,6 @@ public class Medicine
         {
             aMedicine.setMedicineId(aResultSet.getLong("medicineId"));
             aMedicine.setMedicineName(aResultSet.getString("medicineName"));
-          //  aMedicine.setQuantity(aResultSet.getFloat("quantity"));
             aMedicine.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(aResultSet.getLong("MedicineType")));
         }
         if (aMedicine == null)
@@ -87,7 +86,6 @@ public class Medicine
             Medicine aMedicine = new Medicine();
             aMedicine.setMedicineId(aResultSet.getLong("medicineId"));
             aMedicine.setMedicineName(aResultSet.getString("medicineName"));
-         //   aMedicine.setQuantity(aResultSet.getFloat("quantity"));
             aMedicine.setMedicineType(MyMedicineTypeUtil.getMedicineTypeById(aResultSet.getLong("MedicineType")));
             aMedicineList.add(aMedicine);
         }
@@ -100,7 +98,6 @@ public class Medicine
         Statement insertStatement = aConnection.createStatement();
         String sql = "UPDATE  `wdaj`.`medicine` SET  `medicineName` =  '" + medicineName + "', `medicineType` =  '" + MyMedicineTypeUtil.getIdForMedicineType(medicineType) + "' WHERE  `medicine`.`medicineId` =" + medicineId + ";";
         int noOfRowsAffected = insertStatement.executeUpdate(sql);
-
     }
 
     public void save() throws SQLException
@@ -110,8 +107,6 @@ public class Medicine
         Statement insertStatement = aConnection.createStatement();
 
         int noOfRowsAffected = insertStatement.executeUpdate(sql);
-
-
     }
     
     public void delete() throws SQLException
@@ -120,7 +115,5 @@ public class Medicine
         Statement insertStatement = aConnection.createStatement();
         String sql = "UPDATE medicine SET  deleted =  '1' WHERE  medicineId =" + medicineId ;
         int noOfRowsAffected = insertStatement.executeUpdate(sql);
-
-
     }
 }
