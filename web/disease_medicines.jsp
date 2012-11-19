@@ -184,6 +184,7 @@
                     </td>
                 </tr>
             </table>
+            <%= is_valid ? "" : "Please enter valid details"%>
         </form>
     </div>
 
