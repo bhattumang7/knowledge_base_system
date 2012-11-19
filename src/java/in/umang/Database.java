@@ -26,6 +26,7 @@ public class Database
         {
             RuntimeException aRuntimeException = new RuntimeException("Could not load connection");
             aRuntimeException.setStackTrace(e.getStackTrace());
+            System.out.println("Error " + e );
         }
         return aConnection;
 

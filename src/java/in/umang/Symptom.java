@@ -103,7 +103,7 @@ public class Symptom
 
             symptomList.add(aSymptom);
         }
-        aConnection.close();;
+        aConnection.close();
         return symptomList;
     }
 
