@@ -52,8 +52,8 @@
                     String diseaseName = request.getParameter("diseaseName");
                     disease.setDiseaseName(diseaseName);
                     disease.setRule(newExpression);
-                    disease.saveOrUpdate();
-                    response.sendRedirect("disease.jsp");
+                    disease.save();
+                    response.sendRedirect("show_disease.jsp");
                 }
             }
             //Map<String, String[]> aMap = request.getParameterMap();
